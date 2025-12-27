@@ -1,13 +1,20 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.checkCredits = checkCredits;
-function checkCredits(requirements, courses) {
-    const result = {};
-    for (const req of requirements) {
-        const sum = courses
-            .filter(c => c.category === req.category)
-            .reduce((acc, c) => acc + c.credits, 0);
-        result[req.category] = sum;
+export class GraduationChecker {
+    constructor(requirements, courses) {
+        this.requirements = requirements;
+        this.courses = courses;
     }
-    return result;
+    calculate() {
+        for (const course of this.courses) {
+            const req = this.requirements.find(r => r.category === course.category);
+            if (req)
+                req.addCredits(course.credits);
+        }
+    }
+    report() {
+        const result = {};
+        for (const req of this.requirements) {
+            result[req.category] = req.earnedCredits;
+        }
+        return result;
+    }
 }

@@ -1,18 +1,26 @@
 import { Requirement, Course } from "./types.js";
 
-export function checkCredits(
-  requirements: Requirement[],
-  courses: Course[]
-) {
-  const result: Record<string, number> = {};
+export class GraduationChecker {
+  requirements: Requirement[];
+  courses: Course[];
 
-  for (const req of requirements) {
-    const sum = courses
-      .filter(c => c.category === req.category)
-      .reduce((acc, c) => acc + c.credits, 0);
-
-    result[req.category] = sum;
+  constructor(requirements: Requirement[], courses: Course[]) {
+    this.requirements = requirements;
+    this.courses = courses;
   }
 
-  return result;
+  calculate() {
+    for (const course of this.courses) {
+      const req = this.requirements.find(r => r.category === course.category);
+      if (req) req.addCredits(course.credits);
+    }
+  }
+
+  report(): Record<string, number> {
+    const result: Record<string, number> = {};
+    for (const req of this.requirements) {
+      result[req.category] = req.earnedCredits;
+    }
+    return result;
+  }
 }
