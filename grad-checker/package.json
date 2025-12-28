@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start:json": "ts-node src/test.ts data.json --json",
+    "start:text": "ts-node src/test.ts data.json --text"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",

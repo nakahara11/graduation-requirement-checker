@@ -1,4 +1,7 @@
-export class GraduationChecker {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.GraduationChecker = void 0;
+class GraduationChecker {
     constructor(requirements, courses) {
         this.requirements = requirements;
         this.courses = courses;
@@ -22,3 +25,4 @@ export class GraduationChecker {
         return this.getResults().filter(r => !r.passed);
     }
 }
+exports.GraduationChecker = GraduationChecker;

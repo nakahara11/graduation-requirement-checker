@@ -1,0 +1,8 @@
+{
+  "requirements": [
+    { "category": "専門", "requiredCredits": "50" } 
+  ],
+  "courses": [
+    { "name": "データ構造", "category": "専門", "credits": 10 }
+  ]
+}

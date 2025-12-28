@@ -1,0 +1,5 @@
+{
+  "courses": [
+    { "name": "データ構造", "category": "専門", "credits": 10 }
+  ]
+}
